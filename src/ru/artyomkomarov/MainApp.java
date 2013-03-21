@@ -4,21 +4,11 @@ import java.io.File;
 
 public class MainApp {
 	static long ans = 0;
-	public static void calculSize(String path) {
-		File f = new File(path);
-		File[] files = f.listFiles();
-		for(int i = 0; i < files.length; i++) {
-			if(files[i].isDirectory()) {
-				calculSize(files[i].getPath());
-			} else { 
-				ans += files[i].length();
-			}
-		}
-	}
+
     public static void main(String[] args) {
-    	/*args = new String[2];
-    	args[0] = "C:\\Games";
-    	args[1] = "false";*/
+    	args = new String[2];
+    	args[0] = "C:\\Users\\1\\Desktop\\Фотографии";
+    	args[1] = "false";
     	String name = "";
     	String mark = "false";
     	for(int i = 0; i < args.length - 1; i++) {
@@ -38,7 +28,10 @@ public class MainApp {
     		}
     		System.out.println(th.res);
     	} else {
-    		calculSize(name);
+    		File[] files = new File(name).listFiles();
+    		for(int i = 0; i < files.length; i++) {
+    			if(files[i].isFile())ans += files[i].length();
+    		}
     		System.out.println(ans);
     	}
     	long finishTime = System.currentTimeMillis();
