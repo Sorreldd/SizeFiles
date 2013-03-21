@@ -6,12 +6,10 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ThreadClass implements Runnable{
 	static AtomicLong res = new AtomicLong(0);
 	String path;
-	boolean flag = false;
 	File root;
 	File[] files;
-	public ThreadClass(String path, boolean flag) {
+	public ThreadClass(String path) {
 		this.path = path;
-		this.flag = flag;
 		this.root = new File(this.path);
 		files = root.listFiles();
 	}
@@ -29,7 +27,7 @@ public class ThreadClass implements Runnable{
 		th = new Thread[countTh];
 		for(int i = 0; i < files.length; i++) {
 			if(files[i].isDirectory()) {
-				th[indx] = new Thread(new ThreadClass(files[i].getPath(), flag));
+				th[indx] = new Thread(new ThreadClass(files[i].getPath()));
 				th[indx].start();
 				indx++;
 			}
@@ -37,7 +35,9 @@ public class ThreadClass implements Runnable{
 		for(int i = 0; i < countTh; i++) {
 			try {
 				th[i].join();
-			} catch (Exception e) {}			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 		}
 	}
 }
