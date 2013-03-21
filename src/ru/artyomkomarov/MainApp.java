@@ -6,9 +6,9 @@ public class MainApp {
 	static long ans = 0;
 
     public static void main(String[] args) {
-    	args = new String[2];
+    	/*args = new String[2];
     	args[0] = "C:\\Users\\1\\Desktop\\Фотографии";
-    	args[1] = "false";
+    	args[1] = "false";*/
     	String name = "";
     	String mark = "false";
     	for(int i = 0; i < args.length - 1; i++) {
