@@ -17,7 +17,7 @@ public class MainApp {
 	}
     public static void main(String[] args) {
     	/*args = new String[2];
-    	args[0] = "C:\\Users\\1\\Desktop\\AlReader2.win32.ru";
+    	args[0] = "C:\\Games";
     	args[1] = "false";*/
     	String name = "";
     	String mark = "false";
@@ -26,6 +26,7 @@ public class MainApp {
     		else name = name + " " + args[i]; 
     	}
     	mark = args[args.length - 1];
+    	long startTime = System.currentTimeMillis();
     	if(mark.equals("true")) {
     		ThreadClass th = new ThreadClass(args[0]);
     		Thread newTh = new Thread(th);
@@ -40,5 +41,7 @@ public class MainApp {
     		calculSize(name);
     		System.out.println(ans);
     	}
+    	long finishTime = System.currentTimeMillis();
+    	System.out.println("Time mills: " + (finishTime - startTime));
     }
 }
